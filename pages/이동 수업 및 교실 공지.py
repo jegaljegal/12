@@ -6,6 +6,7 @@ st.set_page_config(
 )
 st.title("📢 이동 수업 및 교실 공지 게시판")
 
+# 세션 데이터 초기화
 if "announcements" not in st.session_state:
     st.session_state.announcements = [
         {
@@ -30,6 +31,7 @@ if "announcements" not in st.session_state:
         },
     ]
 
+# 공지 등록 폼
 with st.expander("➕ 새 이동 수업 공지 등록하기"):
     with st.form("add_form", clear_on_submit=True):
         col1, col2 = st.columns(2)
@@ -80,9 +82,19 @@ with st.expander("➕ 새 이동 수업 공지 등록하기"):
                 st.error("과목명과 변경 장소는 필수 입력 사항입니다.")
 
 st.write("### 🚨 등록된 장소 변경 공지 목록")
+
+# .get()을 사용해 이전 데이터에 teacher 키가 없어도 에러가 나지 않도록 예외 처리
 for item in reversed(st.session_state.announcements):
+    teacher_info = item.get("teacher", "담당 교사")
+    date_info = item.get("date", "")
+    period_info = item.get("period", "")
+    subject_info = item.get("subject", "")
+    orig_info = item.get("original", "기존 교실")
+    changed_info = item.get("changed", "")
+    note_info = item.get("note", "-")
+
     st.warning(
-        f"**[{item['date']}] {item['period']} - {item['subject']} ({item['teacher']})**\n\n"
-        f"📍 **위치 변경**: {item['original']} ➡️ **{item['changed']}**\n\n"
-        f"📝 **비고**: {item['note']}"
+        f"**[{date_info}] {period_info} - {subject_info} ({teacher_info})**\n\n"
+        f"📍 **위치 변경**: {orig_info} ➡️ **{changed_info}**\n\n"
+        f"📝 **비고**: {note_info}"
     )
