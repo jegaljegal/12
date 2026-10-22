@@ -54,7 +54,7 @@ with st.expander("➕ 새 이동 수업 공지 등록하기"):
                 "담당 선생님", placeholder="예: 주민지 선생님"
             )
         with col2:
-            input_orig = st.text_input("기존 장소", placeholder="예: 1반 교실")
+            input_orig = st.text_input("기존 장소", placeholder="예: 12반 교실")
             input_changed = st.text_input(
                 "변경 장소", placeholder="예: 제2과학실"
             )
