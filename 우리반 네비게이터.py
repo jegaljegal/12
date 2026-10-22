@@ -191,7 +191,7 @@ menu = st.sidebar.radio(
         "우리반 네비게이터",
         "우리반 기본 시간표",
         "이동 수업 및 교실 공지",
-        "학교 지도 및 길 안내",
+        "네비게이션 길 안내",
         "교실 및 특별실 상세정보",
     ],
 )
@@ -228,7 +228,7 @@ if menu == "우리반 네비게이터":
         )
     with col2:
         st.markdown(
-            """<div class="custom-card"><h4>🗺️ 3. 학교 지도 및 길 안내</h4><p>특별실까지의 최적 경로 안내</p></div>""",
+            """<div class="custom-card"><h4>🗺️ 3. 네비게이션 길 안내</h4><p>특별실까지의 최적 경로 안내</p></div>""",
             unsafe_allow_html=True,
         )
         st.markdown(
