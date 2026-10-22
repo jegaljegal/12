@@ -323,7 +323,7 @@ elif menu == "이동 수업 및 교실 공지":
             unsafe_allow_html=True,
         )
 
-elif menu == "학교 지도 및 길 안내":
+elif menu == "네비게이션 길 안내":
     st.subheader("🗺️ 학교 지도 및 길 안내")
     col1, col2 = st.columns(2)
     with col1:
