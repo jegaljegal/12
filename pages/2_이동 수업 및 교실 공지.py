@@ -17,7 +17,7 @@ if "announcements" not in st.session_state:
             "subject": "과학",
             "teacher": "유우석 선생님",  # 유우석 선생님으로 변경
             "original": "12반 교실",
-            "changed": "제2과학실 (창의관 3층)",
+            "changed": "제2과학실 (본관 5층)",
             "note": "실험복 착용 필수 및 보안경 지참",
         },
         {
