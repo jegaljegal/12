@@ -179,7 +179,7 @@ ROOM_INFO = {
     },
 }
 
-# 5. 사이드바 메뉴
+# 5. 사이드바 메뉴 (순서 변경: 교실 및 특별실 상세정보를 맨 아래로 이동)
 st.sidebar.image(
     "https://img.icons8.com/color/96/school.png", use_container_width=False
 )
@@ -189,10 +189,10 @@ menu = st.sidebar.radio(
     "원하는 페이지를 선택하세요:",
     [
         "우리반 네비게이터",
-        "교실 및 특별실 상세정보",
         "우리반 기본 시간표",
         "이동 수업 및 교실 공지",
-        "네비게이션 길 안내",
+        "학교 지도 및 길 안내",
+        "교실 및 특별실 상세정보",
     ],
 )
 
@@ -228,32 +228,11 @@ if menu == "우리반 네비게이터":
         )
     with col2:
         st.markdown(
-            """<div class="custom-card"><h4>🗺️ 3. 네비게이션 길 안내</h4><p>특별실까지의 최적 경로 안내</p></div>""",
+            """<div class="custom-card"><h4>🗺️ 3. 학교 지도 및 길 안내</h4><p>특별실까지의 최적 경로 안내</p></div>""",
             unsafe_allow_html=True,
         )
         st.markdown(
             """<div class="custom-card"><h4>🔍 4. 교실 및 특별실 상세정보</h4><p>교실/특별실 위치 및 이용 수칙 안내</p></div>""",
-            unsafe_allow_html=True,
-        )
-
-elif menu == "교실 및 특별실 상세정보":
-    st.subheader("🔍 교실 및 특별실 상세정보 사전")
-    selected_room = st.selectbox(
-        "궁금한 특별실을 선택하세요:", list(ROOM_INFO.keys())
-    )
-    if selected_room:
-        data = ROOM_INFO[selected_room]
-        st.markdown(
-            f"""
-        <div class="custom-card">
-            <h3 style="margin-top:0;">📍 {selected_room}</h3>
-            <p><b>• 위치:</b> {data['location']}</p>
-            <p><b>• 찾아가는 길:</b> {data['guide']}</p>
-            <p><b>• 보유 장비/시설:</b> {data['equipment']}</p>
-            <p><b>• 담당 교사:</b> {data['teacher']}</p>
-            <p><b>• 이용 수칙:</b> <span style="color:#dc2626;">{data['note']}</span></p>
-        </div>
-        """,
             unsafe_allow_html=True,
         )
 
@@ -323,7 +302,7 @@ elif menu == "이동 수업 및 교실 공지":
             unsafe_allow_html=True,
         )
 
-elif menu == "네비게이션 길 안내":
+elif menu == "학교 지도 및 길 안내":
     st.subheader("🗺️ 학교 지도 및 길 안내")
     col1, col2 = st.columns(2)
     with col1:
@@ -341,6 +320,27 @@ elif menu == "네비게이션 길 안내":
             <h3>🎯 목적지: {dest_point} ({info['location']})</h3>
             <p>🚶 <b>이동 경로:</b> {info['guide']}</p>
             <p>💡 <b>주의 사항:</b> {info['note']}</p>
+        </div>
+        """,
+            unsafe_allow_html=True,
+        )
+
+elif menu == "교실 및 특별실 상세정보":
+    st.subheader("🔍 교실 및 특별실 상세정보 사전")
+    selected_room = st.selectbox(
+        "궁금한 특별실을 선택하세요:", list(ROOM_INFO.keys())
+    )
+    if selected_room:
+        data = ROOM_INFO[selected_room]
+        st.markdown(
+            f"""
+        <div class="custom-card">
+            <h3 style="margin-top:0;">📍 {selected_room}</h3>
+            <p><b>• 위치:</b> {data['location']}</p>
+            <p><b>• 찾아가는 길:</b> {data['guide']}</p>
+            <p><b>• 보유 장비/시설:</b> {data['equipment']}</p>
+            <p><b>• 담당 교사:</b> {data['teacher']}</p>
+            <p><b>• 이용 수칙:</b> <span style="color:#dc2626;">{data['note']}</span></p>
         </div>
         """,
             unsafe_allow_html=True,
