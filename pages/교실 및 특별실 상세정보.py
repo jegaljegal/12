@@ -1,25 +1,11 @@
-import os
 import streamlit as st
 
 st.set_page_config(
-    page_title="교실 및 특별실 상세정보 & AI",
+    page_title="교실 및 특별실 상세정보",
     page_icon="🔍",
     layout="wide",
 )
 st.title("🔍 교실 및 특별실 상세정보 사전")
-
-# Gemini AI 설정
-ai_client = None
-try:
-    from google import genai
-
-    api_key = st.secrets.get("GEMINI_API_KEY") or os.environ.get(
-        "GEMINI_API_KEY"
-    )
-    if api_key:
-        ai_client = genai.Client(api_key=api_key)
-except Exception:
-    ai_client = None
 
 ROOM_INFO = {
     "제1과학실": {
@@ -71,34 +57,3 @@ if selected_room:
         f"👨‍🏫 **담당 교사**: {data['teacher']}\n\n"
         f"⚠️ **이용 수칙**: {data['note']}"
     )
-
-st.markdown("---")
-st.subheader("🤖 AI 네비게이터에게 질문하기 (Gemini)")
-user_query = st.text_input(
-    "질문을 입력하세요:",
-    placeholder="예: 제2과학실 갈 때 실습복 어디서 갈아입어?",
-)
-
-if st.button("✨ 질문하기", type="primary"):
-    if user_query:
-        if ai_client is not None:
-            with st.spinner("AI 답변 생성 중..."):
-                try:
-                    prompt = f"당신은 친절한 학교 길안내 도우미입니다. 질문에 답변하세요: {user_query}"
-                    # 최신 모델명 gemini-3.5-flash-lite 로 변경
-                    response = ai_client.models.generate_content(
-                        model="gemini-3.5-flash-lite", contents=prompt
-                    )
-                    st.write("🤖 **AI 답변:**")
-                    st.info(response.text)
-                except Exception as e:
-                    st.error(f"오류: {e}")
-        else:
-            st.warning(
-                "🔑 GEMINI_API_KEY가 설정되지 않아 기본 안내 모드로 동작합니다."
-            )
-            st.info(
-                "안내: [학교 지도 및 길 안내] 메뉴에서 출발지와 목적지를 선택하시면 경로를 바로 확인하실 수 있습니다!"
-            )
-    else:
-        st.warning("질문을 입력해 주세요.")
