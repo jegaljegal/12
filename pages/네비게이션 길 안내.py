@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(
     page_title="학교 지도 및 길 안내", page_icon="🗺️", layout="wide"
 )
-st.title("🗺️ 학교 지도 및 네비게이션 길 안내")
+st.title("🗺️네비게이션 길 안내")
 
 ROOM_INFO = {
     "제1과학실": {
