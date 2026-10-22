@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="학교 지도 및 길 안내", page_icon="🗺️", layout="wide"
+    page_title="네비게이션 길 안내", page_icon="🗺️", layout="wide"
 )
 st.title("🗺️ 네비게이션 길 안내")
 
@@ -65,7 +65,7 @@ ROOM_INFO = {
 col1, col2 = st.columns(2)
 with col1:
     start_point = st.selectbox(
-        "🚩 출발지:", ["1반 교실 (본관 2층)", "운동장", "본관 입구"]
+        "🚩 출발지:", ["12반 교실 (본관 2층)", "운동장", "본관 입구"]
     )
 with col2:
     dest_point = st.selectbox("🎯 목적지:", list(ROOM_INFO.keys()))
