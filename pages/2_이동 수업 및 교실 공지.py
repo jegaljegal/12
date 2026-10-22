@@ -14,7 +14,7 @@ if "announcements" not in st.session_state:
             "date": "2026-10-21",
             "period": "3교시",
             "subject": "과학",
-            "teacher": "김과학 선생님",
+            "teacher": "주민지 선생님",
             "original": "1반 교실",
             "changed": "제2과학실 (창의관 3층)",
             "note": "실험복 착용 필수 및 보안경 지참",
@@ -24,7 +24,7 @@ if "announcements" not in st.session_state:
             "date": "2026-10-22",
             "period": "5교시",
             "subject": "체육",
-            "teacher": "이체육 선생님",
+            "teacher": "이학용 선생님",
             "original": "운동장",
             "changed": "체육관 (강당)",
             "note": "우천으로 인한 장소 변경",
@@ -51,7 +51,7 @@ with st.expander("➕ 새 이동 수업 공지 등록하기"):
             )
             input_subject = st.text_input("과목명", placeholder="예: 과학")
             input_teacher = st.text_input(
-                "담당 선생님", placeholder="예: 김과학 선생님"
+                "담당 선생님", placeholder="예: 주민지 선생님"
             )
         with col2:
             input_orig = st.text_input("기존 장소", placeholder="예: 1반 교실")
@@ -70,7 +70,7 @@ with st.expander("➕ 새 이동 수업 공지 등록하기"):
                         "date": str(input_date),
                         "period": input_period,
                         "subject": input_subject,
-                        "teacher": input_teacher or "담당 교사",
+                        "teacher": input_teacher or "담당교사",
                         "original": input_orig or "기존 교실",
                         "changed": input_changed,
                         "note": input_note or "-",
@@ -85,7 +85,7 @@ st.write("### 🚨 등록된 장소 변경 공지 목록")
 
 # .get()을 사용해 이전 데이터에 teacher 키가 없어도 에러가 나지 않도록 예외 처리
 for item in reversed(st.session_state.announcements):
-    teacher_info = item.get("teacher", "담당 교사")
+    teacher_info = item.get("teacher", "담당교사")
     date_info = item.get("date", "")
     period_info = item.get("period", "")
     subject_info = item.get("subject", "")
