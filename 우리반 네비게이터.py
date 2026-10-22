@@ -306,7 +306,7 @@ elif menu == "네비게이션 길 안내":
     col1, col2 = st.columns(2)
     with col1:
         start_point = st.selectbox(
-            "출발지:", ["1반 교실 (본관 2층)", "운동장", "본관 입구"]
+            "출발지:", ["12반 교실 (본관 2층)", "운동장", "본관 입구"]
         )
     with col2:
         dest_point = st.selectbox("도착지 (목적지):", list(ROOM_INFO.keys()))
