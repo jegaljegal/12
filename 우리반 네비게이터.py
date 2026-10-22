@@ -85,7 +85,7 @@ if "announcements" not in st.session_state:
         },
     ]
 
-# 4. 학급 데이터
+# 4. 학급 및 특별실 데이터
 TIMETABLE = {
     "월요일": [
         ("1교시", "국어", "이국어", "1반 교실", "교과서, 공책"),
@@ -179,7 +179,7 @@ ROOM_INFO = {
     },
 }
 
-# 5. 사이드바 메뉴 (순서 변경: 교실 및 특별실 상세정보를 맨 아래로 이동)
+# 5. 사이드바 메뉴
 st.sidebar.image(
     "https://img.icons8.com/color/96/school.png", use_container_width=False
 )
@@ -302,8 +302,8 @@ elif menu == "이동 수업 및 교실 공지":
             unsafe_allow_html=True,
         )
 
-elif menu == "학교 지도 및 길 안내":
-    st.subheader("🗺️ 학교 지도 및 길 안내")
+elif menu == "네비게이션 길 안내":
+    st.subheader("🗺️ 네비게이션 길 안내")
     col1, col2 = st.columns(2)
     with col1:
         start_point = st.selectbox(
